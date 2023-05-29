@@ -8,7 +8,6 @@ export const initShare = createAsyncThunk(`${ShareName}/init`, async ({ }, { rej
   console.log("[call time] : Share#init");
   const response = await BackendApi.get("/shareds");
   const shareData = await response.data;
-  console.log(shareData);
 
   return shareData.data;
 })

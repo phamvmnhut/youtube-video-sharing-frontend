@@ -13,7 +13,7 @@ export default function MainLayout({ children }) {
   return (
     <section className="static bg-background text-white">
       <Head>
-        <title>Pho Finance - A Platform of The Pho Project Ecosystem</title>
+        <title>Youtube Video Sharing</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         {/* <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" /> */}

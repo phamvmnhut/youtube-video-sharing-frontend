@@ -3,6 +3,7 @@ import { BackendApi } from '@components/common/Apis/Api';
 import { createSlice } from "@reduxjs/toolkit";
 import { deleteAccessTokenLocalStorage, deleteRefreshTokenLocalStorage, getRefreshTokenLocalStorage, saveAccessTokenLocalStorage, saveRefreshTokenLocalStorage } from "@utils/localStorage";
 import { toast } from "react-toastify";
+import { setupRecieveNotification } from "services/notification";
 
 export const UserName = "userName";
 export const UserStatus = {
@@ -27,8 +28,6 @@ export const registerUser = createAsyncThunk(`${UserName}/register`, async ({ na
       }
     };
 
-    console.log(bodyData);
-
     await BackendApi.post("/registrations", bodyData);
   } catch (e) {
     return rejectWithValue(e.response.data);
@@ -42,8 +41,6 @@ export const loginUser = createAsyncThunk(`${UserName}/login`, async ({ email, p
     const response = await BackendApi.post("/sessions", loginForm);
     const loginData = await response.data;
 
-    console.log("loginData", loginData);
-
     saveAccessTokenLocalStorage(loginData.auth_token);
 
     // setInterval(()=> {
@@ -54,7 +51,8 @@ export const loginUser = createAsyncThunk(`${UserName}/login`, async ({ email, p
       status: UserStatus.LOGGED,
       id: loginData.data.id,
       name: loginData.data.name,
-      email: loginData.data.email
+      email: loginData.data.email,
+      token: loginData.auth_token,
     };
   } catch (err) {
     return rejectWithValue(e.response.data);
@@ -117,6 +115,7 @@ export const userSlice = createSlice({
         state.name = payload.name;
         state.status = payload.status;
         toast.info("Login Success")
+        setupRecieveNotification(payload.token)
       })
       .addCase(loginUser.rejected, (state, { payload }) => {
         state.loading = false;

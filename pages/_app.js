@@ -1,7 +1,6 @@
 import { store } from '@app/store';
 import { EmptyLayout, MainLayout } from '@components/layout'
 import '@styles/globals.scss';
-import '@iconscout/unicons/css/line.css';
 import { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import TimeAgo from 'javascript-time-ago';

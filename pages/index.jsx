@@ -4,38 +4,13 @@ import 'aos/dist/aos.css';
 import SharedCard from "@components/common/SharedCard";
 import BackendApi from "@components/common/Apis/Api";
 
-export default function HomePage({sharedList}) {
-    // const ws = new WebSocket("ws://localhost:3000/cable");
-
-    // ws.onopen = () => {
-    //     console.log("Connected");
-    //     const gid = Math.random().toString(36).substring(2, 15);
-    //     ws.send(
-    //         JSON.stringify({
-    //             command: "subscribe",
-    //             identifier: JSON.stringify({
-    //                 id: gid,
-    //                 channel: "NotificationsChannel"
-    //             })
-    //         })
-    //     )
-    // }
-
-    // ws.onmessage = (message) => {
-    //     const data = JSON.parse(message.data);
-    //     if (data.type == "ping") return;
-    //     if (data.type == "welcome") return;
-
-    //     console.log(data);
-
-    // }
-
+export default function HomePage({ sharedList }) {
     return (
         <>
             <div className="container">
                 <div className="mt-24">
                     {
-                        sharedList.map((ele) => (<SharedCard key={ele.id} share={ele}/>))
+                        sharedList.map((ele) => (<SharedCard key={ele.id} share={ele} />))
                     }
                 </div>
             </div>
@@ -52,8 +27,8 @@ export async function getServerSideProps(context) {
     const shared = await res.data;
 
     return {
-      props: {
-        sharedList: shared.data,
-      },
+        props: {
+            sharedList: shared.data,
+        },
     };
-  }  
+}  

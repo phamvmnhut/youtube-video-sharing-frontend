@@ -1,27 +1,34 @@
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai"
+import ReactPlayer from 'react-youtube';
 
 export default function SharedCard({ share }) {
 
   return (
-    <div className="mb-3">
-      <div className="flex flex-row gap-3">
-        <div className="bg-white w-1/3 rounded-md">
-          {/* <iframe
-            className="w-full h-full"
-            src="https://www.youtube.com/embed/QY8dhl1EQfI"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe> */}
+    <div className="mb-10 relative">
+      <div className=" absolute -top-5 -right-3 bg-indigo-500 h-12 w-24 rounded-sm flex flex-col justify-center items-center">
+        <div className="flex flex-row items-center gap-3">
+          <AiOutlineLike size={24} className=" cursor-pointer" /> <AiOutlineDislike className=" cursor-pointer" />
         </div>
-        <div className="flex flex-col w-2/3">
-          <div className="text-red font-bold text-xl">{share.url}</div>
-          <div className=" inline">Shared by <span className=" text-indigo-600 inline-block">phamnhut@mail.com</span></div>
-          <div className="flex flex-row items-center">
-            <AiOutlineLike /> 21 <AiOutlineDislike /> 11
+      </div>
+      <div className="flex flex-row gap-5 px-2 py-1 bg-gray-600 rounded-xl">
+        <div className="w-1/2 rounded-md">
+          <ReactPlayer
+            className="w-full aspect-video"
+            url={share?.url}
+            opts={{
+              width: "100%",
+            }}
+          >
+          </ReactPlayer>
+        </div>
+        <div className="flex flex-col w-1/2 gap-2">
+          <div className="text-red font-bold text-xl mt-5">{share?.title}</div>
+          <div className=" inline text-indigo-500">Shared by <span className=" text-white font-bold">{share?.user?.email}</span></div>
+          <div className="flex flex-row items-center gap-3">
+            <AiOutlineLike /> {share?.upvote} <AiOutlineDislike /> {share?.downvote}
           </div>
-          <div className=" inline">Description <p className=" text-indigo-600 inline-block">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p></div>
+          <div className=" inline text-indigo-500">Description</div>
+          <p className="line-clamp-6	">{share?.description}</p>
         </div>
       </div>
     </div>
