@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Teko:wght@300;400;500;600;700&display=swap');
+
+@import "./base.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities  {
+    .fit {
+        @apply min-h-[calc(100vh-88px)] ;
+    }
+    
+    .xfit {
+        @apply max-w-[1440px] mx-auto px-5 md:px-6;
+    }
+
+    .paragraph {
+      @apply tracking-wide leading-relaxed;
+    }
+}
+
+
+.text-header-gradient {
+  background: rgb(57, 132, 244);
+  background: linear-gradient(169.4deg, #3984f4 -6.01%, #A786F7 36.87%, #DA2629 78.04%, #CFB3EE 103.77%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-header-gradient-2 {
+  background: rgb(57, 132, 244);
+  background: linear-gradient(169.4deg, #3984f4 -6.01%, #0cd3ff 36.87%, #2f7cf0 78.04%, #0e65e8 103.77%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// general
+@import "./scss/custom/general";
+@import "./scss/custom/font";
+
+// components
+@import "./scss/components/buttons";
+
+// pages
+@import "./scss/custom/pages/helper";
+@import "./scss/custom/pages/portfolio";
+@import "./scss/custom/pages/contact";
+
+// plugin
+@import "./scss/plugins/choices";

@@ -1,0 +1,52 @@
+.wrapper {
+    @apply max-w-[1440px] mx-auto border-t
+    grid grid-cols-7 lg:grid-cols-8 gap-8 items-start justify-between px-6 py-8 relative;
+
+    .logo {
+        @apply flex items-center space-x-4 col-span-1;
+
+        .title {
+            @apply text-2xl font-bold flex font-monterat;
+        }
+
+        .desc {
+            @apply text-sm font-light flex;
+        }
+    }
+
+    .title {
+        @apply font-bold mb-4 text-2xl;
+    }
+
+    .products {
+        .menu {
+            @apply font-bold tracking-widest relative;
+
+            &:after {
+                content: "";
+                height: 2px;
+                bottom: -3px;
+                transform-origin: left center;
+                transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+                transform: scaleX(0);
+                @apply left-0 right-0 opacity-0 bg-primary absolute;
+            }
+
+            &:hover {
+                &::after {
+                    transform: scaleX(1);
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .button {
+        @apply flex justify-end;
+    }
+
+    .back {
+        @apply max-w-[1440px] mx-auto border-t-2 border-l-2 border-r-2 rounded-t-xl w-full h-full
+    grid grid-cols-3 items-center justify-between absolute bg-white -z-20 bottom-2 left-2;
+        transform: scaleY(1.07);
+    }
+}
