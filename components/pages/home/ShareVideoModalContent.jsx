@@ -1,14 +1,9 @@
 import BackendApi from "@components/common/Apis/Api";
 import { getAccessTokenLocalStorage } from "@utils/localStorage";
 import { useState } from "react";
-import { useRouter } from 'next/router';
 import { toast } from "react-toastify";
 
 export default function ShareVideoModalContent() {
-  const router = useRouter();
-  const refreshData = () => {
-    router.replace(router.asPath);
-  }
 
   const [url, setUrl] = useState("");
 
@@ -25,8 +20,7 @@ export default function ShareVideoModalContent() {
           auth_token
         }
       });
-      refreshData();
-    } catch(err) {
+    } catch (err) {
       const message = err.response;
       toast.error(message.data.error);
     }
