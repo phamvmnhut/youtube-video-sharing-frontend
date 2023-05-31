@@ -23,12 +23,20 @@ HomePage.Layout = MainLayout;
 
 
 export async function getServerSideProps(context) {
-    const res = await BackendApi.get("/shareds")
-    const shared = await res.data;
-
+    try {
+        const res = await BackendApi.get("/shareds")
+        const shared = await res.data;
+        
     return {
         props: {
             sharedList: shared.data,
         },
     };
+    } catch (err){
+        return {
+            props: {
+                sharedList: []
+            },
+        };
+    }
 }  

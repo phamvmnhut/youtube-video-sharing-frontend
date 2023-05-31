@@ -2,7 +2,7 @@ import ToastCustom from "@components/common/ToastCustom";
 import { toast } from "react-toastify";
 
 export function setupRecieveNotification(token) {
-  const ws = new WebSocket("ws://localhost:3000/cable");
+  const ws = new WebSocket(process.env.NEXT_PUBLIC_BACKEND_WS || "ws://localhost:3000/cable");
 
   ws.onopen = () => {
     const gid = Math.random().toString(36).substring(2, 15);
