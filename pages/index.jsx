@@ -2,7 +2,7 @@ import { MainLayout } from "@components/layout";
 
 import 'aos/dist/aos.css';
 import SharedCard from "@components/common/SharedCard";
-import BackendApi from "@components/common/Apis/Api";
+import { BackendApiServer } from "@components/common/Apis/Api";
 
 export default function HomePage({ sharedList }) {
     return (
@@ -24,7 +24,7 @@ HomePage.Layout = MainLayout;
 
 export async function getServerSideProps(context) {
     try {
-        const res = await BackendApi.get("/shareds")
+        const res = await BackendApiServer.get("/shareds")
         const shared = await res.data;
         
     return {
