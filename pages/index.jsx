@@ -8,7 +8,7 @@ export default function HomePage({ sharedList }) {
     return (
         <>
             <div className="container">
-                <div className="mt-24">
+                <div className="mt-24 mx-10 md:mx-0">
                     {
                         sharedList.map((ele) => (<SharedCard key={ele.id} share={ele} />))
                     }

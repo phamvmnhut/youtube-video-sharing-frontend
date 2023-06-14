@@ -35,6 +35,13 @@
   -webkit-text-fill-color: transparent;
 }
 
+.react-player video {
+  position: relative;
+  left: 0;
+  top: 0;
+  transform: none;
+}
+
 // general
 @import "./scss/custom/general";
 @import "./scss/custom/font";
