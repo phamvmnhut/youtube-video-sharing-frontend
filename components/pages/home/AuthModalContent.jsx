@@ -87,14 +87,14 @@ export default function AuthModalContent() {
   }, [authForm.password, authForm.password_confirmation])
 
   async function login() {
-    if (authFormError.email || authFormError.password) {
+    if (authFormError.email || authFormError.password || !authForm.email) {
       return toast.warn("Please complete all error before do");
     }
     dispatch(loginUser({ email: authForm.email, password: authForm.password }));
   }
 
   async function register() {
-    if (authFormError.email || authFormError.password || authFormError.name || authFormError.password_confirmation) {
+    if (authFormError.email || authFormError.password || authFormError.name || authFormError.password_confirmation || !authForm.email) {
       return toast.warn("Please complete all error before do");
     }
     dispatch(registerUser({ ...authForm }));

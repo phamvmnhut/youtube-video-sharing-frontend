@@ -12,7 +12,7 @@ export default function ShareVideoModalContent() {
   const [urlError, setUrlError] = useState("");
 
   async function share() {
-    if (urlError) {
+    if (urlError || !url) {
       return toast.warn("Please complete all error before do");
     }
     const dataBody = {
