@@ -3,6 +3,7 @@ import BackendApi from "@components/common/Apis/Api";
 import Visibility from "@components/common/Visibility";
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -86,10 +87,16 @@ export default function AuthModalContent() {
   }, [authForm.password, authForm.password_confirmation])
 
   async function login() {
+    if (authFormError.email || authFormError.password) {
+      return toast.warn("Please complete all error before do");
+    }
     dispatch(loginUser({ email: authForm.email, password: authForm.password }));
   }
 
   async function register() {
+    if (authFormError.email || authFormError.password || authFormError.name || authFormError.password_confirmation) {
+      return toast.warn("Please complete all error before do");
+    }
     dispatch(registerUser({ ...authForm }));
   }
 
